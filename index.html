@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYTHOO BHAI | Free Fire Gaming</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#07070b;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,55,0,.16),transparent 28%),
+    radial-gradient(circle at 20% 80%,rgba(0,180,255,.10),transparent 30%);
+  z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(5,5,8,.82);
+  backdrop-filter:blur(12px);
+  z-index:10;
+  border-bottom:1px solid #24242c;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#ff4d00;
+}
+
+.logo span{
+  color:white;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:700;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#ff5a00;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  padding:150px 8% 80px;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.hero-content{
+  max-width:720px;
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid #ff4d00;
+  color:#ff7a38;
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:clamp(58px,10vw,120px);
+  line-height:.86;
+  font-weight:1000;
+  letter-spacing:-5px;
+  text-shadow:0 0 35px rgba(255,72,0,.25);
+}
+
+h1 span{
+  color:#ff4d00;
+}
+
+.hero p{
+  margin:28px 0;
+  color:#aaa;
+  font-size:18px;
+  line-height:1.6;
+  max-width:570px;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 24px;
+  border-radius:7px;
+  text-decoration:none;
+  font-weight:900;
+  display:inline-block;
+  cursor:pointer;
+}
+
+.primary{
+  background:#ff4d00;
+  color:#fff;
+  box-shadow:0 0 25px rgba(255,77,0,.35);
+  border:0;
+}
+
+.secondary{
+  border:1px solid #444;
+  color:#fff;
+}
+
+.primary:hover{
+  transform:translateY(-2px);
+}
+
+.stats{
+  display:flex;
+  gap:45px;
+  margin-top:55px;
+}
+
+.stat b{
+  font-size:30px;
+}
+
+.stat small{
+  display:block;
+  color:#777;
+  margin-top:5px;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:95px 8%;
+  border-top:1px solid #17171d;
+}
+
+.section-title{
+  font-size:42px;
+  margin-bottom:35px;
+}
+
+.section-title span{
+  color:#ff4d00;
+}
+
+/* CARDS */
+
+.cards{
+  display:grid;
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:linear-gradient(145deg,#121218,#0b0b0f);
+  border:1px solid #262630;
+  padding:28px;
+  border-radius:14px;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#ff4d00;
+}
+
+.icon{
+  font-size:38px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#8e8e98;
+  line-height:1.6;
+}
+
+/* PLAYER */
+
+.profile{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:50px;
+  align-items:center;
+}
+
+.avatar{
+  min-height:380px;
+  border-radius:22px;
+  border:1px solid #292930;
+  background:
+    radial-gradient(circle,#25252e,#0d0d12 60%);
+  display:grid;
+  place-items:center;
+  font-size:100px;
+  box-shadow:
+    inset 0 0 80px rgba(255,77,0,.08);
+}
+
+.profile p{
+  color:#aaa;
+  line-height:1.8;
+  font-size:17px;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:20px;
+  margin-right:8px;
+  padding:8px 12px;
+  background:#17171e;
+  border-radius:20px;
+  color:#ff7a38;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* CLUTCH UPLOAD */
+
+.editor{
+  margin-bottom:20px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+input,
+textarea{
+  width:100%;
+  background:#08080c;
+  border:1px solid #30303a;
+  color:#fff;
+  border-radius:8px;
+  padding:13px;
+  font:inherit;
+}
+
+textarea{
+  grid-column:1/-1;
+  min-height:90px;
+  resize:vertical;
+}
+
+.clutch-media{
+  width:100%;
+  max-height:260px;
+  object-fit:cover;
+  border-radius:10px;
+  margin:12px 0;
+}
+
+.delete-btn{
+  background:transparent;
+  border:1px solid #444;
+  color:#aaa;
+  padding:8px 11px;
+  border-radius:7px;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.shot{
+  height:190px;
+  border-radius:12px;
+  border:1px solid #282831;
+  background:
+    linear-gradient(135deg,#1a1a21,#0b0b0f);
+  display:flex;
+  align-items:flex-end;
+  padding:18px;
+  font-weight:900;
+  position:relative;
+  overflow:hidden;
+}
+
+.shot:before{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  background:#ff4d00;
+  filter:blur(70px);
+  opacity:.16;
+  right:-40px;
+  top:-40px;
+}
+
+.shot span{
+  position:relative;
+}
+
+/* CTA */
+
+.cta{
+  text-align:center;
+  background:
+    linear-gradient(180deg,#0b0b0f,#130b07);
+  padding:100px 8%;
+}
+
+.cta h2{
+  font-size:clamp(38px,6vw,70px);
+  margin-bottom:15px;
+}
+
+.cta p{
+  color:#999;
+  margin-bottom:28px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:28px 8%;
+  color:#666;
+  text-align:center;
+  border-top:1px solid #1d1d24;
+}
+
+/* MOBILE */
+
+@media(max-width:760px){
+
+  nav a{
+    display:none;
+  }
+
+  .hero{
+    padding-top:130px;
+  }
+
+  .stats{
+    gap:22px;
+  }
+
+  .stat b{
+    font-size:23px;
+  }
+
+  .profile{
+    grid-template-columns:1fr;
+  }
+
+  .avatar{
+    min-height:280px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  textarea{
+    grid-column:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+  <div class="logo">
+    MYTHOO <span>BHAI</span>
+  </div>
+
+  <div>
+    <a href="#home">HOME</a>
+    <a href="#loadout">LOADOUT</a>
+    <a href="#clutches">CLUTCHES</a>
+    <a href="#profile">PLAYER</a>
+    <a href="#gallery">HIGHLIGHTS</a>
+  </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="badge">
+      ⚡ FREE FIRE GAMING ZONE
+    </div>
+
+    <h1>
+      MYTHOO<br>
+      <span>BHAI</span>
+    </h1>
+
+    <p>
+      Enter the arena. Lock your target. Make every
+      round count. A futuristic gaming hub built for
+      Free Fire fans, highlights and pure Booyah energy.
+    </p>
+
+    <div class="buttons">
+
+      <a class="btn primary" href="#gallery">
+        🔥 VIEW HIGHLIGHTS
+      </a>
+
+      <a class="btn secondary" href="#profile">
+        👑 PLAYER PROFILE
+      </a>
+
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <b>BOOYAH</b>
+        <small>MISSION</small>
+      </div>
+
+      <div class="stat">
+        <b>HEADSHOT</b>
+        <small>MODE: ON</small>
+      </div>
+
+      <div class="stat">
+        <b>24/7</b>
+        <small>GRIND</small>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LOADOUT -->
+
+<section class="section" id="loadout">
+
+  <h2 class="section-title">
+    THE <span>LOADOUT</span>
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>HEADSHOT MODE</h3>
+      <p>
+        Sharp aim, fast reactions and one goal:
+        dominate the round.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>RUSH KING</h3>
+      <p>
+        Fast pushes, fearless plays and pressure
+        from the first second.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>BOOYAH HUNTER</h3>
+      <p>
+        Every match is another chance to climb,
+        improve and win.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔥</div>
+      <h3>CLUTCH ENERGY</h3>
+      <p>
+        When the squad needs a play, stay calm
+        and make it happen.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CLUTCHES -->
+
+<section class="section" id="clutches">
+
+  <h2 class="section-title">
+    YOUR <span>CLUTCHES</span>
+  </h2>
+
+  <div class="card editor">
+
+    <h3>➕ ADD A CLUTCH</h3>
+
+    <p style="margin:8px 0 18px">
+      Add a title, your clutch info, and a video
+      or picture. Everything is saved in this browser.
+    </p>
+
+    <div class="form-grid">
+
+      <input
+        id="clutchTitle"
+        placeholder="Clutch title — e.g. 1v4 Last Zone"
+      >
+
+      <input
+        id="clutchDate"
+        placeholder="Date — e.g. 13 Sep 2026"
+      >
+
+      <textarea
+        id="clutchInfo"
+        placeholder="What happened? Weapon? Score?"
+      ></textarea>
+
+      <input
+        id="clutchMedia"
+        type="file"
+        accept="image/*,video/*"
+      >
+
+    </div>
+
+    <button
+      class="btn primary"
+      onclick="addClutch()"
+    >
+      🔥 ADD CLUTCH
+    </button>
+
+  </div>
+
+  <div
+    id="clutchList"
+    class="cards"
+    style="margin-top:20px"
+  ></div>
+
+</section>
+
+
+<!-- HIGHLIGHTS -->
+
+<section class="section" id="gallery">
+
+  <h2 class="section-title">
+    RECENT <span>HIGHLIGHTS</span>
+  </h2>
+
+  <div class="gallery">
+
+    <div class="shot">
+      <span>01 — THE CLUTCH</span>
+    </div>
+
+    <div class="shot">
+      <span>02 — LAST ZONE</span>
+    </div>
+
+    <div class="shot">
+      <span>03 — SQUAD WIPE</span>
+    </div>
+
+    <div class="shot">
+      <span>04 — ONE TAP</span>
+    </div>
+
+    <div class="shot">
+      <span>05 — BOOYAH</span>
+    </div>
+
+    <div class="shot">
+      <span>06 — NEXT LEVEL</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PLAYER -->
+
+<section class="section" id="profile">
+
+  <div class="profile">
+
+    <div class="avatar">
+      👑
+    </div>
+
+    <div>
+
+      <div class="badge">
+        PLAYER PROFILE
+      </div>
+
+      <h2 class="section-title">
+        THE <span>MYTH</span>
+      </h2>
+
+      <p>
+        Welcome to the official-style fan hub for
+        MYTHOO BHAI. This space is made for the grind:
+        gaming moments, clutch plays, community energy
+        and the road to the next Booyah.
+      </p>
+
+      <span class="tag">FREE FIRE</span>
+      <span class="tag">CLUTCH</span>
+      <span class="tag">BOOYAH</span>
+      <span class="tag">GAMING</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+  <h2>
+    READY FOR
+    <span style="color:#ff4d00">
+      BOOYAH?
+    </span>
+  </h2>
+
+  <p>
+    The next match starts now.
+  </p>
+
+  <a
+    class="btn primary"
+    href="#home"
+  >
+    ⚡ BACK TO TOP
+  </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+  © 2026 MYTHOO BHAI GAMING • Fan-made gaming website concept
+</footer>
+
+
+<!-- CLUTCH JAVASCRIPT -->
+
+<script>
+
+const KEY = "mythooBhaiClutches";
+
+let clutches =
+  JSON.parse(localStorage.getItem(KEY) || "[]");
+
+
+function save(){
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(clutches)
+  );
+
+  render();
+
+}
+
+
+function addClutch(){
+
+  const title =
+    document
+      .getElementById("clutchTitle")
+      .value
+      .trim();
+
+  const date =
+    document
+      .getElementById("clutchDate")
+      .value
+      .trim();
+
+  const info =
+    document
+      .getElementById("clutchInfo")
+      .value
+      .trim();
+
+  const file =
+    document
+      .getElementById("clutchMedia")
+      .files[0];
+
+
+  if(!title){
+
+    alert("Add a clutch title first!");
+
+    return;
+
+  }
+
+
+  const finish = (media="") => {
+
+    clutches.unshift({
+
+      id:Date.now(),
+
+      title:title,
+
+      date:date,
+
+      info:info,
+
+      media:media,
+
+      type:file ? file.type : ""
+
+    });
+
+    save();
+
+
+    document.getElementById("clutchTitle").value="";
+    document.getElementById("clutchDate").value="";
+    document.getElementById("clutchInfo").value="";
+    document.getElementById("clutchMedia").value="";
+
+  };
+
+
+  if(file){
+
+    const reader =
+      new FileReader();
+
+    reader.onload = () => {
+
+      finish(reader.result);
+
+    };
+
+    reader.readAsDataURL(file);
+
+  }
+
+  else{
+
+    finish();
+
+  }
+
+}
+
+
+function removeClutch(id){
+
+  clutches =
+    clutches.filter(
+      x => x.id !== id
+    );
+
+  save();
+
+}
+
+
+function render(){
+
+  const box =
+    document.getElementById("clutchList");
+
+  if(!box) return;
+
+
+  if(clutches.length){
+
+    box.innerHTML =
+      clutches.map(x => {
+
+        let media = "";
+
+
+        if(
+          x.media &&
+          x.type.startsWith("video")
+        ){
+
+          media = `
+          <video
+            class="clutch-media"
+            controls
+            src="${x.media}">
+          </video>
+          `;
+
+        }
+
+        else if(x.media){
+
+          media = `
+          <img
+            class="clutch-media"
+            src="${x.media}"
+            alt="Clutch screenshot">
+          `;
+
+        }
+
+
+        return `
+
+        <div class="card">
+
+          <div class="icon">
+            🏆
+          </div>
+
+          <h3>
+            ${escapeHtml(x.title)}
+          </h3>
+
+          <p
+            style="
+              color:#ff7a38;
+              margin:8px 0;
+            "
+          >
+            ${escapeHtml(
+              x.date || "CLUTCH"
+            )}
+          </p>
+
+          ${media}
+
+          <p>
+            ${escapeHtml(
+              x.info || "Booyah moment."
+            )}
+          </p>
+
+          <button
+            class="delete-btn"
+            onclick="removeClutch(${x.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+  else{
+
+    box.innerHTML = `
+
+      <div class="card">
+
+        <div class="icon">
+          📸
+        </div>
+
+        <h3>
+          NO CLUTCHES YET
+        </h3>
+
+        <p>
+          Add your first screenshot or video above.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+function escapeHtml(s){
+
+  return String(s).replace(
+    /[&<>"']/g,
+
+    m => ({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    }[m])
+
+  );
+
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>
